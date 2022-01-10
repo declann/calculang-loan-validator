@@ -102,20 +102,36 @@ return /******/ (function(modules) { // webpackBootstrap
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return v; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v_pow_term", function() { return v_pow_term; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_amount", function() { return repayment_amount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "balance", function() { return balance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_made", function() { return repayment_made; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment", function() { return repayment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest", function() { return interest; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "principal", function() { return principal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return i; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "term", function() { return term; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "year", function() { return year; });
 const v = ({ i_in }) => 1 / (1 + i({ i_in }));
 
 const v_pow_term = ({ i_in, term_in }) => Math.pow(v({ i_in }), term({ term_in }));
 
-const repayment = ({ principal_in, i_in, term_in }) => principal({ principal_in }) * i({ i_in }) / (1 - v_pow_term({ i_in, term_in }));
+const repayment_amount = ({ principal_in, i_in, term_in }) => principal({ principal_in }) * i({ i_in }) / (1 - v_pow_term({ i_in, term_in }));
+
+const balance = ({ year_in, principal_in, i_in, term_in }) => {
+  if (year({ year_in }) == 0) return principal({ principal_in });else
+  return balance({ principal_in, i_in, term_in, year_in: year({ year_in }) - 1 }) + interest({ year_in, principal_in, term_in, i_in }) - repayment({ year_in, term_in, principal_in, i_in });
+};
+
+const repayment_made = ({ year_in, term_in }) => year({ year_in }) <= term({ term_in }) && year({ year_in }) != 0;
+const repayment = ({ year_in, term_in, principal_in, i_in }) => repayment_made({ year_in, term_in }) * repayment_amount({ principal_in, i_in, term_in });
+
+const interest = ({ year_in, principal_in, term_in, i_in }) => balance({ principal_in, i_in, term_in, year_in: year({ year_in }) - 1 }) * i({ i_in });
 
 // inputs:
 const principal = ({ principal_in }) => principal_in;
 const i = ({ i_in }) => i_in;
 const term = ({ term_in }) => term_in;
+const year = ({ year_in }) => year_in;
 
 /***/ })
 /******/ ]);
