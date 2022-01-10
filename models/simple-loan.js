@@ -254,10 +254,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return v; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v_pow_term", function() { return v_pow_term; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_amount", function() { return repayment_amount; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "balance", function() { return balance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest", function() { return interest; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_made", function() { return repayment_made; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment", function() { return repayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest", function() { return interest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "balance", function() { return balance; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "principal", function() { return principal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return i; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "term", function() { return term; });
@@ -303,13 +303,13 @@ const repayment_amount = (a) => {
 
 
 
-////////// start balance memo-loader code //////////
-const balance$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"]);
-const balance = (a) => {
-  return balance$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"])({ year_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
+////////// start interest memo-loader code //////////
+const interest$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "c"]);
+const interest = (a) => {
+  return interest$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "c"])({ year_in, principal_in, term_in, i_in }); // never run, but here to "trick" calculang graph logic
 };
-////////// end balance memo-loader code //////////
+////////// end interest memo-loader code //////////
 
 
 
@@ -333,13 +333,13 @@ const repayment = (a) => {
 
 
 
-////////// start interest memo-loader code //////////
-const interest$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "c"]);
-const interest = (a) => {
-  return interest$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "c"])({ year_in, principal_in, term_in, i_in }); // never run, but here to "trick" calculang graph logic
+////////// start balance memo-loader code //////////
+const balance$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"]);
+const balance = (a) => {
+  return balance$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"])({ year_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
-////////// end interest memo-loader code //////////
+////////// end balance memo-loader code //////////
 
 
 
@@ -498,10 +498,10 @@ if ( true && typeof Int8Array != 'object' && typeof nodelist != 'function') {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return v_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return v_pow_term_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return repayment_amount_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return balance_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return interest_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return repayment_made_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return repayment_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return interest_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return balance_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return principal_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return i_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return term_; });
@@ -513,15 +513,16 @@ const v_pow_term_ = ({ i_in, term_in }) => Math.pow(Object(_simple_loan_cul_js__
 
 const repayment_amount_ = ({ principal_in, i_in, term_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["principal"])({ principal_in }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }) / (1 - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v_pow_term"])({ i_in, term_in }));
 
+const interest_ = ({ year_in, principal_in, term_in, i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in });
+
+// modelling all repayments as being met:
+const repayment_made_ = ({ year_in, term_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) <= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) && Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) != 0;
+const repayment_ = ({ year_in, term_in, principal_in, i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_made"])({ year_in, term_in }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_amount"])({ principal_in, i_in, term_in });
+
 const balance_ = ({ year_in, principal_in, i_in, term_in }) => {
   if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["principal"])({ principal_in });else
   return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) + Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, term_in, i_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, term_in, principal_in, i_in });
 };
-
-const repayment_made_ = ({ year_in, term_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) <= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) && Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) != 0;
-const repayment_ = ({ year_in, term_in, principal_in, i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_made"])({ year_in, term_in }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_amount"])({ principal_in, i_in, term_in });
-
-const interest_ = ({ year_in, principal_in, term_in, i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in });
 
 // inputs:
 const principal_ = ({ principal_in }) => principal_in;

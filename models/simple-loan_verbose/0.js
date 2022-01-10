@@ -2,7 +2,7 @@
 import memoize from 'lru-memoize';
 import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
-import { v_ as v$, v_pow_term_ as v_pow_term$, repayment_amount_ as repayment_amount$, balance_ as balance$, repayment_made_ as repayment_made$, repayment_ as repayment$, interest_ as interest$, principal_ as principal$, i_ as i$, term_ as term$, year_ as year$ } from "./simple-loan.cul.js?+memoed&cul_scope_id=1&cul_parent_scope_id=0&location=ba21ed285072db421519963fabcd19e4"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+import { v_ as v$, v_pow_term_ as v_pow_term$, repayment_amount_ as repayment_amount$, interest_ as interest$, repayment_made_ as repayment_made$, repayment_ as repayment$, balance_ as balance$, principal_ as principal$, i_ as i$, term_ as term$, year_ as year$ } from "./simple-loan.cul.js?+memoed&cul_scope_id=1&cul_parent_scope_id=0&location=ba21ed285072db421519963fabcd19e4"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
 
 
@@ -36,13 +36,13 @@ export const repayment_amount = (a) => {
 
 
 
-////////// start balance memo-loader code //////////
-const balance$m = memoize(999999, isEqual)(balance$);
-export const balance = (a) => {
-  return balance$m(a);
-  balance$({ year_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
+////////// start interest memo-loader code //////////
+const interest$m = memoize(999999, isEqual)(interest$);
+export const interest = (a) => {
+  return interest$m(a);
+  interest$({ year_in, principal_in, term_in, i_in }); // never run, but here to "trick" calculang graph logic
 };
-////////// end balance memo-loader code //////////
+////////// end interest memo-loader code //////////
 
 
 
@@ -66,13 +66,13 @@ export const repayment = (a) => {
 
 
 
-////////// start interest memo-loader code //////////
-const interest$m = memoize(999999, isEqual)(interest$);
-export const interest = (a) => {
-  return interest$m(a);
-  interest$({ year_in, principal_in, term_in, i_in }); // never run, but here to "trick" calculang graph logic
+////////// start balance memo-loader code //////////
+const balance$m = memoize(999999, isEqual)(balance$);
+export const balance = (a) => {
+  return balance$m(a);
+  balance$({ year_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
-////////// end interest memo-loader code //////////
+////////// end balance memo-loader code //////////
 
 
 
