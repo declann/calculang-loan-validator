@@ -1,0 +1,33 @@
+{
+  "name": "@declann/calculang-loan-validator",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/declann/calculang-loan-validator.git"
+  },
+  "homepage": "https://github.com/declann/calculang-loan-validator/tree/main",
+  "author": "Declan Naughton working for DCN Consulting",
+  "keywords": [
+    "calculang",
+    "calculations",
+    "numbers",
+    "math",
+    "mathematics",
+    "models",
+    "modeling",
+    "modelling",
+    "functional",
+    "functional programming",
+    "fp"
+  ],
+  "dependencies": {
+    "date-fns": "^2.25.0",
+    "lru-memoize": "^1.1.0",
+    "raw-loader": "^4.0.2",
+    "underscore": "^1.13.1"
+  },
+  "devDependencies": {
+    "@calculang/calculang-js": "file:../../../../programming/PROJECTS/github/DECLANN/calculang/packages/calculang-js"
+  }
+}
