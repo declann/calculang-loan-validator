@@ -17,5 +17,5 @@ export const interest = () => balance({ year_in: year() - 1 }) * i();
 // inputs:
 export const principal = () => principal_in;
 export const i = () => i_in;
-export const term = () => (1);
+export const term = () => term_in;
 export const year = () => year_in;

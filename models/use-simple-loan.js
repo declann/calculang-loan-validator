@@ -11,3 +11,12 @@ console.log(
         .toFixed(2)
   )
 );
+
+console.log(
+  _.range(101).map(
+    (year_in) =>
+      +l
+        .balance({ year_in, term_in: 100, i_in: 0.04, principal_in: 100000 })
+        .toFixed(2)
+  )
+);
