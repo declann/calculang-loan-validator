@@ -30,7 +30,7 @@ export const v_pow_term = (a) => {
 const repayment_amount$m = memoize(999999, isEqual)(repayment_amount$);
 export const repayment_amount = (a) => {
   return repayment_amount$m(a);
-  repayment_amount$({ principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
+  repayment_amount$({ i_in, principal_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end repayment_amount memo-loader code //////////
 
@@ -60,7 +60,7 @@ export const repayment_made = (a) => {
 const repayment$m = memoize(999999, isEqual)(repayment$);
 export const repayment = (a) => {
   return repayment$m(a);
-  repayment$({ year_in, term_in, principal_in, i_in }); // never run, but here to "trick" calculang graph logic
+  repayment$({ year_in, term_in, i_in, principal_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end repayment memo-loader code //////////
 

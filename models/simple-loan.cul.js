@@ -2,7 +2,10 @@ export const v = () => 1 / (1 + i());
 
 export const v_pow_term = () => Math.pow(v(), term());
 
-export const repayment_amount = () => (principal() * i()) / (1 - v_pow_term());
+export const repayment_amount = () => {
+  if (i() == 0) return principal() / term();
+  else return (principal() * i()) / (1 - v_pow_term());
+};
 
 export const interest = () => balance({ year_in: year() - 1 }) * i();
 
