@@ -113,24 +113,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "year", function() { return year; });
 const v = ({ i_in }) => 1 / (1 + i({ i_in }));
 
-const v_pow_term = ({ i_in, term_in }) => Math.pow(v({ i_in }), term({ term_in }));
+const v_pow_term = ({ i_in }) => Math.pow(v({ i_in }), term({}));
 
-const repayment_amount = ({ principal_in, i_in, term_in }) => principal({ principal_in }) * i({ i_in }) / (1 - v_pow_term({ i_in, term_in }));
+const repayment_amount = ({ principal_in, i_in }) => principal({ principal_in }) * i({ i_in }) / (1 - v_pow_term({ i_in }));
 
-const balance = ({ year_in, principal_in, i_in, term_in }) => {
+const balance = ({ year_in, principal_in, i_in }) => {
   if (year({ year_in }) == 0) return principal({ principal_in });else
-  return balance({ principal_in, i_in, term_in, year_in: year({ year_in }) - 1 }) + interest({ year_in, principal_in, term_in, i_in }) - repayment({ year_in, term_in, principal_in, i_in });
+  return balance({ principal_in, i_in, year_in: year({ year_in }) - 1 }) + interest({ year_in, principal_in, i_in }) - repayment({ year_in, principal_in, i_in });
 };
 
-const repayment_made = ({ year_in, term_in }) => year({ year_in }) <= term({ term_in }) && year({ year_in }) != 0;
-const repayment = ({ year_in, term_in, principal_in, i_in }) => repayment_made({ year_in, term_in }) * repayment_amount({ principal_in, i_in, term_in });
+const repayment_made = ({ year_in }) => year({ year_in }) <= term({}) && year({ year_in }) != 0;
+const repayment = ({ year_in, principal_in, i_in }) => repayment_made({ year_in }) * repayment_amount({ principal_in, i_in });
 
-const interest = ({ year_in, principal_in, term_in, i_in }) => balance({ principal_in, i_in, term_in, year_in: year({ year_in }) - 1 }) * i({ i_in });
+const interest = ({ year_in, principal_in, i_in }) => balance({ principal_in, i_in, year_in: year({ year_in }) - 1 }) * i({ i_in });
 
 // inputs:
 const principal = ({ principal_in }) => principal_in;
 const i = ({ i_in }) => i_in;
-const term = ({ term_in }) => term_in;
+const term = ({}) => 1;
 const year = ({ year_in }) => year_in;
 
 /***/ })
