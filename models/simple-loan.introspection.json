@@ -1,0 +1,176 @@
+{
+  "cul_functions": {
+    "0_v": {
+      "cul_scope_id": 0,
+      "name": "v",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "inputs": [
+        "i_in"
+      ]
+    },
+    "0_v_pow_term": {
+      "cul_scope_id": 0,
+      "name": "v_pow_term",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "inputs": [
+        "i_in",
+        "term_in"
+      ]
+    },
+    "0_repayment": {
+      "cul_scope_id": 0,
+      "name": "repayment",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "inputs": [
+        "i_in",
+        "term_in"
+      ]
+    },
+    "0_principal": {
+      "cul_scope_id": 0,
+      "name": "principal",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "inputs": [
+        "principal_in"
+      ]
+    },
+    "0_principal_in": {
+      "cul_scope_id": 0,
+      "name": "principal_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "principal_in"
+      ]
+    },
+    "0_i": {
+      "cul_scope_id": 0,
+      "name": "i",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "inputs": [
+        "i_in"
+      ]
+    },
+    "0_i_in": {
+      "cul_scope_id": 0,
+      "name": "i_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "i_in"
+      ]
+    },
+    "0_term": {
+      "cul_scope_id": 0,
+      "name": "term",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "inputs": [
+        "term_in"
+      ]
+    },
+    "0_term_in": {
+      "cul_scope_id": 0,
+      "name": "term_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "term_in"
+      ]
+    }
+  },
+  "cul_links": [
+    {
+      "to": "0_v",
+      "from": "0_i",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_v_pow_term",
+      "from": "0_v",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_v_pow_term",
+      "from": "0_term",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_repayment",
+      "from": "0_principle",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_repayment",
+      "from": "0_i",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_repayment",
+      "from": "0_v_pow_term",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "0_principal",
+      "from": "0_principal_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_i",
+      "from": "0_i_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_term",
+      "from": "0_term_in",
+      "reason": "input"
+    }
+  ],
+  "cul_scope_ids_to_resource": {
+    "0": "./simple-loan.cul.js"
+  },
+  "import_sources_to_resource": {},
+  "cul_input_map": {
+    "0_v": [
+      "i_in"
+    ],
+    "0_v_pow_term": [
+      "i_in",
+      "term_in"
+    ],
+    "0_repayment": [
+      "i_in",
+      "term_in"
+    ],
+    "0_principal": [
+      "principal_in"
+    ],
+    "0_principal_in": [
+      "principal_in"
+    ],
+    "0_i": [
+      "i_in"
+    ],
+    "0_i_in": [
+      "i_in"
+    ],
+    "0_term": [
+      "term_in"
+    ],
+    "0_term_in": [
+      "term_in"
+    ]
+  },
+  "dot": "digraph {\n  \"0_v\" [cul_scope_id=0,name=v,cul_source_scope_id=0,reason=definition,inputs=i_in,label=\"0_v inputs: i_in\"]\n  \"0_v_pow_term\" [cul_scope_id=0,name=v_pow_term,cul_source_scope_id=0,reason=definition,inputs=\"i_in,term_in\",label=\"0_v_pow_term inputs: i_in,term_in\"]\n  \"0_repayment\" [cul_scope_id=0,name=repayment,cul_source_scope_id=0,reason=definition,inputs=\"i_in,term_in\",label=\"0_repayment inputs: i_in,term_in\"]\n  \"0_principal\" [cul_scope_id=0,name=principal,cul_source_scope_id=0,reason=definition,inputs=principal_in,label=\"0_principal inputs: principal_in\"]\n  \"0_principal_in\" [cul_scope_id=0,name=principal_in,cul_source_scope_id=0,reason=\"input definition\",inputs=principal_in,label=\"0_principal_in inputs: principal_in\"]\n  \"0_i\" [cul_scope_id=0,name=i,cul_source_scope_id=0,reason=definition,inputs=i_in,label=\"0_i inputs: i_in\"]\n  \"0_i_in\" [cul_scope_id=0,name=i_in,cul_source_scope_id=0,reason=\"input definition\",inputs=i_in,label=\"0_i_in inputs: i_in\"]\n  \"0_term\" [cul_scope_id=0,name=term,cul_source_scope_id=0,reason=definition,inputs=term_in,label=\"0_term inputs: term_in\"]\n  \"0_term_in\" [cul_scope_id=0,name=term_in,cul_source_scope_id=0,reason=\"input definition\",inputs=term_in,label=\"0_term_in inputs: term_in\"]\n  \"0_i\" -> \"0_v\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_v\" -> \"0_v_pow_term\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_term\" -> \"0_v_pow_term\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_i\" -> \"0_repayment\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_v_pow_term\" -> \"0_repayment\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_principal_in\" -> \"0_principal\" [value=\"[object Object]\",label=\"input +principal_in\"]\n  \"0_i_in\" -> \"0_i\" [value=\"[object Object]\",label=\"input +i_in\"]\n  \"0_term_in\" -> \"0_term\" [value=\"[object Object]\",label=\"input +term_in\"]\n}\n"
+}
