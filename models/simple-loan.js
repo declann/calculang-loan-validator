@@ -110,7 +110,7 @@ const v = ({ i_in }) => 1 / (1 + i({ i_in }));
 
 const v_pow_term = ({ i_in, term_in }) => Math.pow(v({ i_in }), term({ term_in }));
 
-const repayment = ({ i_in, term_in }) => principle() * i({ i_in }) / (1 - v_pow_term({ i_in, term_in }));
+const repayment = ({ principal_in, i_in, term_in }) => principal({ principal_in }) * i({ i_in }) / (1 - v_pow_term({ i_in, term_in }));
 
 // inputs:
 const principal = ({ principal_in }) => principal_in;
