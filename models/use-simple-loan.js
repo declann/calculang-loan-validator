@@ -30,3 +30,20 @@ console.log(
         .toFixed(2)
   )
 );
+
+console.log(
+  _.range(11).map(
+    (year_in) =>
+      +l
+        .capital_repayment({ year_in, term_in: 10, i_in: 0.04, principal_in: 100000, missed_repayment_year_in:1 })
+        .toFixed(2)
+  )
+);
+console.log(
+  _.range(11).map(
+    (year_in) =>
+      +l
+        .interest_repayment({ year_in, term_in: 10, i_in: 0.04, principal_in: 100000, missed_repayment_year_in:1 })
+        .toFixed(2)
+  )
+);
