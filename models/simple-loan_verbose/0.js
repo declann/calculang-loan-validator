@@ -30,7 +30,7 @@ export const v_pow_term_left = (a) => {
 const repayment_amount$m = memoize(999999, isEqual)(repayment_amount$);
 export const repayment_amount = (a) => {
   return repayment_amount$m(a);
-  repayment_amount$({ i_in, year_in, principal_in, term_in, missed_repayment_year_in }); // never run, but here to "trick" calculang graph logic
+  repayment_amount$({ year_in, principal_in, i_in, term_in, missed_repayment_year_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end repayment_amount memo-loader code //////////
 
@@ -50,7 +50,7 @@ export const interest = (a) => {
 const capital_repayment$m = memoize(999999, isEqual)(capital_repayment$);
 export const capital_repayment = (a) => {
   return capital_repayment$m(a);
-  capital_repayment$({ year_in, term_in, missed_repayment_year_in, i_in, principal_in }); // never run, but here to "trick" calculang graph logic
+  capital_repayment$({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end capital_repayment memo-loader code //////////
 
@@ -60,7 +60,7 @@ export const capital_repayment = (a) => {
 const interest_repayment$m = memoize(999999, isEqual)(interest_repayment$);
 export const interest_repayment = (a) => {
   return interest_repayment$m(a);
-  interest_repayment$({ year_in, term_in, missed_repayment_year_in, i_in, principal_in }); // never run, but here to "trick" calculang graph logic
+  interest_repayment$({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end interest_repayment memo-loader code //////////
 
@@ -80,7 +80,7 @@ export const repayment_made = (a) => {
 const repayment$m = memoize(999999, isEqual)(repayment$);
 export const repayment = (a) => {
   return repayment$m(a);
-  repayment$({ year_in, term_in, missed_repayment_year_in, i_in, principal_in }); // never run, but here to "trick" calculang graph logic
+  repayment$({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end repayment memo-loader code //////////
 

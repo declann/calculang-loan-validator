@@ -5,6 +5,7 @@ export const v_pow_term_left = () => Math.pow(v(), term() - year());
 // automatic refinancing on:
 // @ year=0 ans=0
 export const repayment_amount = () => {
+  if (Math.abs(balance({ year_in: year() - 1 })) < 0.01) return 0;
   if (i() == 0) return balance({ year_in: year() - 1 }) / (term() - year());
   else
     return (balance({ year_in: year() - 1 }) * i()) / (1 - v_pow_term_left());
