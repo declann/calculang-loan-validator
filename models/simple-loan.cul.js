@@ -1,4 +1,4 @@
-export const v = () => 1 / (1 + i());
+export const v = () => 1 / (1 + interest_rate());
 
 export const v_pow_term_left = () => Math.pow(v(), term() - year());
 
@@ -7,13 +7,13 @@ export const v_pow_term_left = () => Math.pow(v(), term() - year());
 export const repayment_amount = () => {
   if (Math.abs(balance({ year_in: year() - 1 })) < 0.01) return 0;
   //if (term() == year()) ??
-  if (i() == 0) return balance({ year_in: year() - 1 }) / (term() - year());
+  if (interest_rate() == 0) return balance({ year_in: year() - 1 }) / (term() - year());
   else
-    return (balance({ year_in: year() - 1 }) * i()) / (1 - v_pow_term_left());
+    return (balance({ year_in: year() - 1 }) * interest_rate()) / (1 - v_pow_term_left());
 };
 
 // interest charged:
-export const interest = () => balance({ year_in: year() - 1 }) * i();
+export const interest = () => balance({ year_in: year() - 1 }) * interest_rate();
 // restrict cap repayment to repayment made..
 export const capital_repayment = () => {
   return Math.max(0, repayment() - interest_repayment());
@@ -41,6 +41,9 @@ export const balance = () => {
     );
 };
 
+
+export const interest_rate = () => (year() >= d_i_year() ? (i() + d_i()) : i());
+
 // inputs:
 export const principal = () => principal_in;
 export const i = () => i_in;
@@ -48,3 +51,5 @@ export const term = () => term_in;
 export const year = () => year_in;
 export const missed_repayment_year = () => missed_repayment_year_in;
 export const skip_interest = () => skip_interest_in;
+export const d_i_year = () => d_i_year_in;
+export const d_i = () => d_i_in;

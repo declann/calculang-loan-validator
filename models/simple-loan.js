@@ -91,11 +91,224 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return v; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v_pow_term_left", function() { return v_pow_term_left; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_amount", function() { return repayment_amount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest", function() { return interest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "capital_repayment", function() { return capital_repayment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest_repayment", function() { return interest_repayment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_made", function() { return repayment_made; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment", function() { return repayment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "balance", function() { return balance; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest_rate", function() { return interest_rate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "principal", function() { return principal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return i; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "term", function() { return term; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "year", function() { return year; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "missed_repayment_year", function() { return missed_repayment_year; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skip_interest", function() { return skip_interest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d_i_year", function() { return d_i_year; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d_i", function() { return d_i; });
+/* harmony import */ var lru_memoize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
+/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
+/* harmony import */ var _simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
+
+
+ // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
+
+ // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
+
+
+////////// start v memo-loader code //////////
+const v$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_ */ "p"]);
+const v = (a) => {
+  return v$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_ */ "p"])({ year_in, d_i_year_in, i_in, d_i_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end v memo-loader code //////////
+
+
+
+////////// start v_pow_term_left memo-loader code //////////
+const v_pow_term_left$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_pow_term_left_ */ "q"]);
+const v_pow_term_left = (a) => {
+  return v_pow_term_left$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_pow_term_left_ */ "q"])({ year_in, d_i_year_in, i_in, d_i_in, term_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end v_pow_term_left memo-loader code //////////
+
+
+
+////////// start repayment_amount memo-loader code //////////
+const repayment_amount$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_amount_ */ "l"]);
+const repayment_amount = (a) => {
+  return repayment_amount$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_amount_ */ "l"])({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end repayment_amount memo-loader code //////////
+
+
+
+////////// start interest memo-loader code //////////
+const interest$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "f"]);
+const interest = (a) => {
+  return interest$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "f"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end interest memo-loader code //////////
+
+
+
+////////// start capital_repayment memo-loader code //////////
+const capital_repayment$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* capital_repayment_ */ "b"]);
+const capital_repayment = (a) => {
+  return capital_repayment$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* capital_repayment_ */ "b"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end capital_repayment memo-loader code //////////
+
+
+
+////////// start interest_repayment memo-loader code //////////
+const interest_repayment$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_repayment_ */ "h"]);
+const interest_repayment = (a) => {
+  return interest_repayment$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_repayment_ */ "h"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end interest_repayment memo-loader code //////////
+
+
+
+////////// start repayment_made memo-loader code //////////
+const repayment_made$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_made_ */ "m"]);
+const repayment_made = (a) => {
+  return repayment_made$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_made_ */ "m"])({ year_in, term_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end repayment_made memo-loader code //////////
+
+
+
+////////// start repayment memo-loader code //////////
+const repayment$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_ */ "k"]);
+const repayment = (a) => {
+  return repayment$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_ */ "k"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end repayment memo-loader code //////////
+
+
+
+////////// start balance memo-loader code //////////
+const balance$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"]);
+const balance = (a) => {
+  return balance$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"])({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end balance memo-loader code //////////
+
+
+
+////////// start interest_rate memo-loader code //////////
+const interest_rate$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_rate_ */ "g"]);
+const interest_rate = (a) => {
+  return interest_rate$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_rate_ */ "g"])({ year_in, d_i_year_in, i_in, d_i_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end interest_rate memo-loader code //////////
+
+
+
+////////// start principal memo-loader code //////////
+const principal$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* principal_ */ "j"]);
+const principal = (a) => {
+  return principal$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* principal_ */ "j"])({ principal_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end principal memo-loader code //////////
+
+
+
+////////// start i memo-loader code //////////
+const i$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* i_ */ "e"]);
+const i = (a) => {
+  return i$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* i_ */ "e"])({ i_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end i memo-loader code //////////
+
+
+
+////////// start term memo-loader code //////////
+const term$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* term_ */ "o"]);
+const term = (a) => {
+  return term$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* term_ */ "o"])({ term_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end term memo-loader code //////////
+
+
+
+////////// start year memo-loader code //////////
+const year$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* year_ */ "r"]);
+const year = (a) => {
+  return year$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* year_ */ "r"])({ year_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end year memo-loader code //////////
+
+
+
+////////// start missed_repayment_year memo-loader code //////////
+const missed_repayment_year$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* missed_repayment_year_ */ "i"]);
+const missed_repayment_year = (a) => {
+  return missed_repayment_year$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* missed_repayment_year_ */ "i"])({ missed_repayment_year_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end missed_repayment_year memo-loader code //////////
+
+
+
+////////// start skip_interest memo-loader code //////////
+const skip_interest$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* skip_interest_ */ "n"]);
+const skip_interest = (a) => {
+  return skip_interest$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* skip_interest_ */ "n"])({ skip_interest_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end skip_interest memo-loader code //////////
+
+
+
+////////// start d_i_year memo-loader code //////////
+const d_i_year$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* d_i_year_ */ "d"]);
+const d_i_year = (a) => {
+  return d_i_year$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* d_i_year_ */ "d"])({ d_i_year_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end d_i_year memo-loader code //////////
+
+
+
+////////// start d_i memo-loader code //////////
+const d_i$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* d_i_ */ "c"]);
+const d_i = (a) => {
+  return d_i$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* d_i_ */ "c"])({ d_i_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end d_i memo-loader code //////////
+
+/***/ }),
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -166,194 +379,94 @@ var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(164)))
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return v; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v_pow_term_left", function() { return v_pow_term_left; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_amount", function() { return repayment_amount; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest", function() { return interest; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "capital_repayment", function() { return capital_repayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest_repayment", function() { return interest_repayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_made", function() { return repayment_made; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment", function() { return repayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "balance", function() { return balance; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "principal", function() { return principal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return i; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "term", function() { return term; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "year", function() { return year; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "missed_repayment_year", function() { return missed_repayment_year; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skip_interest", function() { return skip_interest; });
-/* harmony import */ var lru_memoize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
-/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
-/* harmony import */ var _simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return v_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return v_pow_term_left_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return repayment_amount_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return interest_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return capital_repayment_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return interest_repayment_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return repayment_made_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return repayment_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return balance_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return interest_rate_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return principal_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return i_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return term_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return year_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return missed_repayment_year_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return skip_interest_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return d_i_year_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return d_i_; });
+/* harmony import */ var _simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+const v_ = ({ year_in, d_i_year_in, i_in, d_i_in }) => 1 / (1 + Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }));
 
+const v_pow_term_left_ = ({ year_in, d_i_year_in, i_in, d_i_in, term_in }) => Math.pow(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v"])({ year_in, d_i_year_in, i_in, d_i_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));
 
- // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
+// automatic refinancing on:
+// @ year=0 ans=0
+const repayment_amount_ = ({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
+  if (Math.abs(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 })) < 0.01) return 0;
+  //if (term() == year()) ??
+  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) / (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));else
 
- // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
-
-
-
-////////// start v memo-loader code //////////
-const v$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_ */ "m"]);
-const v = (a) => {
-  return v$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_ */ "m"])({ i_in }); // never run, but here to "trick" calculang graph logic
+  return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }) / (1 - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v_pow_term_left"])({ year_in, d_i_year_in, i_in, d_i_in, term_in }));
 };
-////////// end v memo-loader code //////////
 
-
-
-////////// start v_pow_term_left memo-loader code //////////
-const v_pow_term_left$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_pow_term_left_ */ "n"]);
-const v_pow_term_left = (a) => {
-  return v_pow_term_left$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_pow_term_left_ */ "n"])({ i_in, term_in, year_in }); // never run, but here to "trick" calculang graph logic
+// interest charged:
+const interest_ = ({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in });
+// restrict cap repayment to repayment made..
+const capital_repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }) => {
+  return Math.max(0, Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }));
 };
-////////// end v_pow_term_left memo-loader code //////////
+const interest_repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }) => Math.min(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in }));
 
-
-
-////////// start repayment_amount memo-loader code //////////
-const repayment_amount$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_amount_ */ "i"]);
-const repayment_amount = (a) => {
-  return repayment_amount$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_amount_ */ "i"])({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in }); // never run, but here to "trick" calculang graph logic
+// modelling all repayments as being met, except for missed_repayment_year (if not 0):
+const repayment_made_ = ({ year_in, term_in }) =>
+Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) <= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) && Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) != 0; /*&& year() != missed_repayment_year()*/
+const repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }) => {
+  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) == Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["missed_repayment_year"])({ missed_repayment_year_in })) {
+    if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["skip_interest"])({ skip_interest_in })) return 0;else
+    return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in });
+  } else return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_made"])({ year_in, term_in }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_amount"])({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in });
 };
-////////// end repayment_amount memo-loader code //////////
 
+const balance_ = ({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
+  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) < 0) return 0;
+  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["principal"])({ principal_in });else
 
+  return (
+    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) /*- capital_repayment()*/ +
+    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in }) -
+    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }));
 
-////////// start interest memo-loader code //////////
-const interest$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "d"]);
-const interest = (a) => {
-  return interest$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "d"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in }); // never run, but here to "trick" calculang graph logic
 };
-////////// end interest memo-loader code //////////
 
 
+const interest_rate_ = ({ year_in, d_i_year_in, i_in, d_i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) >= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["d_i_year"])({ d_i_year_in }) ? Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }) + Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["d_i"])({ d_i_in }) : Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in });
 
-////////// start capital_repayment memo-loader code //////////
-const capital_repayment$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* capital_repayment_ */ "b"]);
-const capital_repayment = (a) => {
-  return capital_repayment$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* capital_repayment_ */ "b"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end capital_repayment memo-loader code //////////
-
-
-
-////////// start interest_repayment memo-loader code //////////
-const interest_repayment$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_repayment_ */ "e"]);
-const interest_repayment = (a) => {
-  return interest_repayment$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_repayment_ */ "e"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end interest_repayment memo-loader code //////////
-
-
-
-////////// start repayment_made memo-loader code //////////
-const repayment_made$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_made_ */ "j"]);
-const repayment_made = (a) => {
-  return repayment_made$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_made_ */ "j"])({ year_in, term_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end repayment_made memo-loader code //////////
-
-
-
-////////// start repayment memo-loader code //////////
-const repayment$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_ */ "h"]);
-const repayment = (a) => {
-  return repayment$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_ */ "h"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end repayment memo-loader code //////////
-
-
-
-////////// start balance memo-loader code //////////
-const balance$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"]);
-const balance = (a) => {
-  return balance$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"])({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end balance memo-loader code //////////
-
-
-
-////////// start principal memo-loader code //////////
-const principal$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* principal_ */ "g"]);
-const principal = (a) => {
-  return principal$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* principal_ */ "g"])({ principal_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end principal memo-loader code //////////
-
-
-
-////////// start i memo-loader code //////////
-const i$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* i_ */ "c"]);
-const i = (a) => {
-  return i$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* i_ */ "c"])({ i_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end i memo-loader code //////////
-
-
-
-////////// start term memo-loader code //////////
-const term$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* term_ */ "l"]);
-const term = (a) => {
-  return term$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* term_ */ "l"])({ term_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end term memo-loader code //////////
-
-
-
-////////// start year memo-loader code //////////
-const year$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* year_ */ "o"]);
-const year = (a) => {
-  return year$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* year_ */ "o"])({ year_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end year memo-loader code //////////
-
-
-
-////////// start missed_repayment_year memo-loader code //////////
-const missed_repayment_year$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* missed_repayment_year_ */ "f"]);
-const missed_repayment_year = (a) => {
-  return missed_repayment_year$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* missed_repayment_year_ */ "f"])({ missed_repayment_year_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end missed_repayment_year memo-loader code //////////
-
-
-
-////////// start skip_interest memo-loader code //////////
-const skip_interest$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* skip_interest_ */ "k"]);
-const skip_interest = (a) => {
-  return skip_interest$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* skip_interest_ */ "k"])({ skip_interest_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end skip_interest memo-loader code //////////
+// inputs:
+const principal_ = ({ principal_in }) => principal_in;
+const i_ = ({ i_in }) => i_in;
+const term_ = ({ term_in }) => term_in;
+const year_ = ({ year_in }) => year_in;
+const missed_repayment_year_ = ({ missed_repayment_year_in }) => missed_repayment_year_in;
+const skip_interest_ = ({ skip_interest_in }) => skip_interest_in;
+const d_i_year_ = ({ d_i_year_in }) => d_i_year_in;
+const d_i_ = ({ d_i_in }) => d_i_in;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return keys; });
 /* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
 /* harmony import */ var _collectNonEnumProps_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(83);
 
 
@@ -374,12 +487,12 @@ function keys(obj) {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
 
 // If Underscore is called as a function, it returns a wrapped object that can
@@ -408,12 +521,12 @@ _.prototype.toString = function() {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tagTester; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
 
 // Internal function for creating a `toString`-based type tester.
@@ -426,84 +539,12 @@ function tagTester(name) {
 
 
 /***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return v_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return v_pow_term_left_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return repayment_amount_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return interest_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return capital_repayment_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return interest_repayment_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return repayment_made_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return repayment_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return balance_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return principal_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return i_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return term_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return year_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return missed_repayment_year_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return skip_interest_; });
-/* harmony import */ var _simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-const v_ = ({ i_in }) => 1 / (1 + Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }));
-
-const v_pow_term_left_ = ({ i_in, term_in, year_in }) => Math.pow(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v"])({ i_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));
-
-// automatic refinancing on:
-// @ year=0 ans=0
-const repayment_amount_ = ({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
-  if (Math.abs(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 })) < 0.01) return 0;
-  //if (term() == year()) ??
-  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) / (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));else
-
-  return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }) / (1 - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v_pow_term_left"])({ i_in, term_in, year_in }));
-};
-
-// interest charged:
-const interest_ = ({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in });
-// restrict cap repayment to repayment made..
-const capital_repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }) => {
-  return Math.max(0, Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }));
-};
-const interest_repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }) => Math.min(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in }));
-
-// modelling all repayments as being met, except for missed_repayment_year (if not 0):
-const repayment_made_ = ({ year_in, term_in }) =>
-Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) <= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) && Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) != 0; /*&& year() != missed_repayment_year()*/
-const repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }) => {
-  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) == Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["missed_repayment_year"])({ missed_repayment_year_in })) {
-    if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["skip_interest"])({ skip_interest_in })) return 0;else
-    return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in });
-  } else return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_made"])({ year_in, term_in }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_amount"])({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in });
-};
-
-const balance_ = ({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
-  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) < 0) return 0;
-  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["principal"])({ principal_in });else
-
-  return (
-    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) /*- capital_repayment()*/ +
-    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in }) -
-    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }));
-
-};
-
-// inputs:
-const principal_ = ({ principal_in }) => principal_in;
-const i_ = ({ i_in }) => i_in;
-const term_ = ({ term_in }) => term_in;
-const year_ = ({ year_in }) => year_in;
-const missed_repayment_year_ = ({ missed_repayment_year_in }) => missed_repayment_year_in;
-const skip_interest_ = ({ skip_interest_in }) => skip_interest_in;
-
-/***/ }),
 /* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cb; });
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 /* harmony import */ var _baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(85);
 /* harmony import */ var _iteratee_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(66);
 
@@ -558,8 +599,8 @@ function restArguments(func, startIndex) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
 
 
 
@@ -608,55 +649,6 @@ if ( true && typeof Int8Array != 'object' && typeof nodelist != 'function') {
 
 /***/ }),
 /* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return each; });
-/* harmony import */ var _optimizeCb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(25);
-/* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
-
-
-
-
-// The cornerstone for collection functions, an `each`
-// implementation, aka `forEach`.
-// Handles raw objects in addition to array-likes. Treats all
-// sparse array-likes as if they were dense.
-function each(obj, iteratee, context) {
-  iteratee = Object(_optimizeCb_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(iteratee, context);
-  var i, length;
-  if (Object(_isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(obj)) {
-    for (i = 0, length = obj.length; i < length; i++) {
-      iteratee(obj[i], i, obj);
-    }
-  } else {
-    var _keys = Object(_keys_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(obj);
-    for (i = 0, length = _keys.length; i < length; i++) {
-      iteratee(obj[_keys[i]], _keys[i], obj);
-    }
-  }
-  return obj;
-}
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return has; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-
-
-// Internal function to check whether `key` is an own property name of `obj`.
-function has(obj, key) {
-  return obj != null && _setup_js__WEBPACK_IMPORTED_MODULE_0__[/* hasOwnProperty */ "i"].call(obj, key);
-}
-
-
-/***/ }),
-/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -879,7 +871,7 @@ function memoize() {
 
 
 /***/ }),
-/* 14 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -908,6 +900,55 @@ function memoize() {
 
 
 /***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return each; });
+/* harmony import */ var _optimizeCb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(25);
+/* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+
+
+
+
+// The cornerstone for collection functions, an `each`
+// implementation, aka `forEach`.
+// Handles raw objects in addition to array-likes. Treats all
+// sparse array-likes as if they were dense.
+function each(obj, iteratee, context) {
+  iteratee = Object(_optimizeCb_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(iteratee, context);
+  var i, length;
+  if (Object(_isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(obj)) {
+    for (i = 0, length = obj.length; i < length; i++) {
+      iteratee(obj[i], i, obj);
+    }
+  } else {
+    var _keys = Object(_keys_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(obj);
+    for (i = 0, length = _keys.length; i < length; i++) {
+      iteratee(obj[_keys[i]], _keys[i], obj);
+    }
+  }
+  return obj;
+}
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return has; });
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+
+
+// Internal function to check whether `key` is an own property name of `obj`.
+function has(obj, key) {
+  return obj != null && _setup_js__WEBPACK_IMPORTED_MODULE_0__[/* hasOwnProperty */ "i"].call(obj, key);
+}
+
+
+/***/ }),
 /* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -925,8 +966,8 @@ function isObject(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
 
 
 
@@ -964,7 +1005,7 @@ function contains(obj, item, fromIndex, guard) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return map; });
 /* harmony import */ var _cb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
 
 
 
@@ -989,7 +1030,7 @@ function map(obj, iteratee, context) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return values; });
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 
 
 // Retrieve the values of an object's properties.
@@ -1054,7 +1095,7 @@ function flatten(input, depth, strict, output) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return filter; });
 /* harmony import */ var _cb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
-/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
+/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
 
 
 
@@ -1076,7 +1117,7 @@ function filter(obj, predicate, context) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allKeys; });
 /* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
 /* harmony import */ var _collectNonEnumProps_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(83);
 
 
@@ -1100,7 +1141,7 @@ function allKeys(obj) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return hasStringTagBug; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isIE11; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _hasObjectTag_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(97);
 
 
@@ -1120,7 +1161,7 @@ var hasStringTagBug = (
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return toPath; });
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 /* harmony import */ var _toPath_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(92);
 
 
@@ -1240,7 +1281,7 @@ var mapMethods = commonInit.concat(forEachName, mapTail),
 "use strict";
 /* harmony import */ var _restArguments_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
 /* harmony import */ var _executeBound_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(88);
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
 
 
 
@@ -1285,7 +1326,7 @@ partial.placeholder = _underscore_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return group; });
 /* harmony import */ var _cb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
-/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
+/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
 
 
 
@@ -1309,7 +1350,7 @@ function group(behavior, partition) {
 
 "use strict";
 /* harmony import */ var _createAssigner_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(43);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 
 
 
@@ -1324,7 +1365,7 @@ function group(behavior, partition) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 /* harmony import */ var _isFunction_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
 /* harmony import */ var _isArrayBuffer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(57);
 /* harmony import */ var _stringTagBug_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23);
@@ -1362,7 +1403,7 @@ function ie10IsDataView(obj) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return rest; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
 
 // Returns everything but the first entry of the `array`. Especially useful on
@@ -1379,7 +1420,7 @@ function rest(array, n, guard) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VERSION", function() { return _setup_js__WEBPACK_IMPORTED_MODULE_0__["e"]; });
 
 /* harmony import */ var _restArguments_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
@@ -1463,7 +1504,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _isWeakSet_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(111);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isWeakSet", function() { return _isWeakSet_js__WEBPACK_IMPORTED_MODULE_27__["a"]; });
 
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(3);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "keys", function() { return _keys_js__WEBPACK_IMPORTED_MODULE_28__["a"]; });
 
 /* harmony import */ var _allKeys_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(22);
@@ -1636,7 +1677,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _findWhere_js__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(136);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "findWhere", function() { return _findWhere_js__WEBPACK_IMPORTED_MODULE_82__["a"]; });
 
-/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(11);
+/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(13);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "each", function() { return _each_js__WEBPACK_IMPORTED_MODULE_83__["a"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "forEach", function() { return _each_js__WEBPACK_IMPORTED_MODULE_83__["a"]; });
@@ -1984,7 +2025,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('String'));
@@ -1995,8 +2036,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
-/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
 
 
 
@@ -2270,7 +2311,7 @@ function random(min, max) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return chainResult; });
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 
 
 // Helper function to continue chaining intermediate results.
@@ -2328,7 +2369,7 @@ function isUndefined(obj) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isBoolean; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
 
 // Is a given value a boolean?
@@ -2342,7 +2383,7 @@ function isBoolean(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('Number'));
@@ -2353,7 +2394,7 @@ function isBoolean(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('Symbol'));
@@ -2364,7 +2405,7 @@ function isBoolean(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('ArrayBuffer'));
@@ -2376,7 +2417,7 @@ function isBoolean(obj) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isNaN; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _isNumber_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(55);
 
 
@@ -2392,7 +2433,7 @@ function isNaN(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _isDataView_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(32);
 /* harmony import */ var _constant_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(60);
 /* harmony import */ var _isBufferLike_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(161);
@@ -2433,7 +2474,7 @@ function constant(value) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isMatch; });
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 
 
 // Returns whether an object has a given set of `key:value` pairs.
@@ -2455,7 +2496,7 @@ function isMatch(object, attrs) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return invert; });
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 
 
 // Invert the keys and values of an object. The values must be serializable.
@@ -2526,7 +2567,7 @@ function get(object, path, defaultValue) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return iteratee; });
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 /* harmony import */ var _baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(85);
 
 
@@ -2617,7 +2658,7 @@ function before(times, func) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return findKey; });
 /* harmony import */ var _cb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 
 
 
@@ -2697,7 +2738,7 @@ function sortedIndex(array, obj, iteratee, context) {
 /* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
 /* harmony import */ var _values_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
 /* harmony import */ var _cb_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
-/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
+/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
 
 
 
@@ -2776,7 +2817,7 @@ function sample(obj, n, guard) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return toArray; });
 /* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(16);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
 /* harmony import */ var _isString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(36);
 /* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
 /* harmony import */ var _map_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(18);
@@ -2849,7 +2890,7 @@ function toArray(obj) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return initial; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
 
 // Returns everything but the last entry of the array. Especially useful on
@@ -2890,7 +2931,7 @@ function initial(array, n, guard) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createSizePropertyCheck; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
 
 // Common internal logic for `isArrayLike` and `isBufferLike`.
@@ -2922,9 +2963,9 @@ function shallowProperty(key) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return collectNonEnumProps; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _isFunction_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
-/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
+/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
 
 
 
@@ -2974,7 +3015,7 @@ function collectNonEnumProps(obj, keys) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return baseCreate; });
 /* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
 
 
 
@@ -3033,7 +3074,7 @@ function baseIteratee(value, context, argCount) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createEscaper; });
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 
 
 // Internal helper to generate functions for escaping and unescaping strings
@@ -3124,7 +3165,7 @@ function createPredicateIndexFinder(dir) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createIndexFinder; });
 /* harmony import */ var _getLength_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
 /* harmony import */ var _isNaN_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(58);
 
 
@@ -3163,7 +3204,7 @@ function createIndexFinder(dir, predicateFind, sortedIndex) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createReduce; });
 /* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 /* harmony import */ var _optimizeCb_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(25);
 
 
@@ -3201,7 +3242,7 @@ function createReduce(dir) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return toPath; });
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 /* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
 
 
@@ -3219,7 +3260,7 @@ _underscore_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].toPath = toPath;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 
 
 // By default, Underscore uses ERB-style template delimiters. Change the
@@ -3251,7 +3292,7 @@ _underscore_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].toPath = toPath;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return every; });
 /* harmony import */ var _cb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
 
 
 
@@ -3277,7 +3318,7 @@ function every(obj, predicate, context) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return some; });
 /* harmony import */ var _cb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
 /* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
 
 
 
@@ -3300,7 +3341,7 @@ function some(obj, predicate, context) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('Object'));
@@ -3390,7 +3431,7 @@ function isElement(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('Date'));
@@ -3401,7 +3442,7 @@ function isElement(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('RegExp'));
@@ -3412,7 +3453,7 @@ function isElement(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('Error'));
@@ -3424,7 +3465,7 @@ function isElement(obj) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isFinite; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(56);
 
 
@@ -3445,7 +3486,7 @@ function isFinite(obj) {
 /* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
 /* harmony import */ var _isString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(36);
 /* harmony import */ var _isArguments_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(37);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
 
 
 
@@ -3472,15 +3513,15 @@ function isEmpty(obj) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isEqual; });
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
 /* harmony import */ var _getByteLength_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(33);
 /* harmony import */ var _isTypedArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(59);
 /* harmony import */ var _isFunction_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
 /* harmony import */ var _stringTagBug_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(23);
 /* harmony import */ var _isDataView_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(32);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2);
-/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(12);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(3);
+/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(14);
 /* harmony import */ var _toBufferView_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(98);
 
 
@@ -3627,7 +3668,7 @@ function isEqual(a, b) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 /* harmony import */ var _stringTagBug_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
 /* harmony import */ var _methodFingerprint_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
 
@@ -3642,7 +3683,7 @@ function isEqual(a, b) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 /* harmony import */ var _stringTagBug_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
 /* harmony import */ var _methodFingerprint_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
 
@@ -3657,7 +3698,7 @@ function isEqual(a, b) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 /* harmony import */ var _stringTagBug_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
 /* harmony import */ var _methodFingerprint_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
 
@@ -3672,7 +3713,7 @@ function isEqual(a, b) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('WeakSet'));
@@ -3684,7 +3725,7 @@ function isEqual(a, b) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return pairs; });
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 
 
 // Convert an object into a list of `[key, value]` pairs.
@@ -3762,7 +3803,7 @@ function tap(obj, interceptor) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return has; });
-/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
+/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
 /* harmony import */ var _toPath_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(24);
 
 
@@ -3789,7 +3830,7 @@ function has(obj, path) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mapObject; });
 /* harmony import */ var _cb_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 
 
 
@@ -3881,7 +3922,7 @@ function times(n, iteratee, context) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return template; });
 /* harmony import */ var _defaults_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(64);
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _templateSettings_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(93);
 
 
@@ -4039,7 +4080,7 @@ function uniqueId(prefix) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return chain; });
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
 
 
 // Start chaining a wrapped Underscore object.
@@ -4083,7 +4124,7 @@ function chain(obj) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return memoize; });
-/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
+/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
 
 
 // Memoize an expensive function by storing its results.
@@ -4106,7 +4147,7 @@ function memoize(func, hasher) {
 "use strict";
 /* harmony import */ var _partial_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(28);
 /* harmony import */ var _delay_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(69);
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
 
 
 
@@ -4409,7 +4450,7 @@ function where(obj, attrs) {
 /* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
 /* harmony import */ var _values_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
 /* harmony import */ var _cb_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
-/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
+/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
 
 
 
@@ -4497,7 +4538,7 @@ function sortBy(obj, iteratee, context) {
 
 "use strict";
 /* harmony import */ var _group_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
-/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
+/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
 
 
 
@@ -4529,7 +4570,7 @@ function sortBy(obj, iteratee, context) {
 
 "use strict";
 /* harmony import */ var _group_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
-/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12);
+/* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
 
 
 
@@ -4563,7 +4604,7 @@ function sortBy(obj, iteratee, context) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return size; });
 /* harmony import */ var _isArrayLike_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 
 
 
@@ -4798,7 +4839,7 @@ function range(start, stop, step) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return chunk; });
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 
 
 // Chunk a single array into multiple arrays, each containing `count` or fewer
@@ -4820,10 +4861,10 @@ function chunk(array, count) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mixin; });
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
 /* harmony import */ var _functions_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(45);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1);
 /* harmony import */ var _chainResult_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(50);
 
 
@@ -4850,9 +4891,9 @@ function mixin(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
-/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
+/* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4);
+/* harmony import */ var _each_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+/* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
 /* harmony import */ var _chainResult_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(50);
 
 
