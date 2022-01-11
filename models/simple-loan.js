@@ -185,6 +185,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "term", function() { return term; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "year", function() { return year; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "missed_repayment_year", function() { return missed_repayment_year; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "skip_interest", function() { return skip_interest; });
 /* harmony import */ var lru_memoize__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
 /* harmony import */ var _simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
@@ -197,20 +198,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 ////////// start v memo-loader code //////////
-const v$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_ */ "l"]);
+const v$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_ */ "m"]);
 const v = (a) => {
   return v$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_ */ "l"])({ i_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_ */ "m"])({ i_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end v memo-loader code //////////
 
 
 
 ////////// start v_pow_term_left memo-loader code //////////
-const v_pow_term_left$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_pow_term_left_ */ "m"]);
+const v_pow_term_left$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_pow_term_left_ */ "n"]);
 const v_pow_term_left = (a) => {
   return v_pow_term_left$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_pow_term_left_ */ "m"])({ i_in, term_in, year_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* v_pow_term_left_ */ "n"])({ i_in, term_in, year_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end v_pow_term_left memo-loader code //////////
 
@@ -220,7 +221,7 @@ const v_pow_term_left = (a) => {
 const repayment_amount$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_amount_ */ "i"]);
 const repayment_amount = (a) => {
   return repayment_amount$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_amount_ */ "i"])({ year_in, principal_in, i_in, term_in, missed_repayment_year_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_amount_ */ "i"])({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end repayment_amount memo-loader code //////////
 
@@ -230,7 +231,7 @@ const repayment_amount = (a) => {
 const interest$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "d"]);
 const interest = (a) => {
   return interest$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "d"])({ year_in, principal_in, term_in, missed_repayment_year_in, i_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_ */ "d"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end interest memo-loader code //////////
 
@@ -240,7 +241,7 @@ const interest = (a) => {
 const capital_repayment$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* capital_repayment_ */ "b"]);
 const capital_repayment = (a) => {
   return capital_repayment$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* capital_repayment_ */ "b"])({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* capital_repayment_ */ "b"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end capital_repayment memo-loader code //////////
 
@@ -250,7 +251,7 @@ const capital_repayment = (a) => {
 const interest_repayment$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_repayment_ */ "e"]);
 const interest_repayment = (a) => {
   return interest_repayment$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_repayment_ */ "e"])({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* interest_repayment_ */ "e"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end interest_repayment memo-loader code //////////
 
@@ -260,7 +261,7 @@ const interest_repayment = (a) => {
 const repayment_made$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_made_ */ "j"]);
 const repayment_made = (a) => {
   return repayment_made$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_made_ */ "j"])({ year_in, term_in, missed_repayment_year_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_made_ */ "j"])({ year_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end repayment_made memo-loader code //////////
 
@@ -270,7 +271,7 @@ const repayment_made = (a) => {
 const repayment$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_ */ "h"]);
 const repayment = (a) => {
   return repayment$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_ */ "h"])({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_ */ "h"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end repayment memo-loader code //////////
 
@@ -280,7 +281,7 @@ const repayment = (a) => {
 const balance$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"]);
 const balance = (a) => {
   return balance$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"])({ year_in, principal_in, i_in, term_in, missed_repayment_year_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* balance_ */ "a"])({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end balance memo-loader code //////////
 
@@ -307,20 +308,20 @@ const i = (a) => {
 
 
 ////////// start term memo-loader code //////////
-const term$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* term_ */ "k"]);
+const term$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* term_ */ "l"]);
 const term = (a) => {
   return term$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* term_ */ "k"])({ term_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* term_ */ "l"])({ term_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end term memo-loader code //////////
 
 
 
 ////////// start year memo-loader code //////////
-const year$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* year_ */ "n"]);
+const year$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* year_ */ "o"]);
 const year = (a) => {
   return year$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* year_ */ "n"])({ year_in }); // never run, but here to "trick" calculang graph logic
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* year_ */ "o"])({ year_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end year memo-loader code //////////
 
@@ -333,6 +334,16 @@ const missed_repayment_year = (a) => {
   Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* missed_repayment_year_ */ "f"])({ missed_repayment_year_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end missed_repayment_year memo-loader code //////////
+
+
+
+////////// start skip_interest memo-loader code //////////
+const skip_interest$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* skip_interest_ */ "k"]);
+const skip_interest = (a) => {
+  return skip_interest$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* skip_interest_ */ "k"])({ skip_interest_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end skip_interest memo-loader code //////////
 
 /***/ }),
 /* 2 */
@@ -419,8 +430,8 @@ function tagTester(name) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return v_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return v_pow_term_left_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return v_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return v_pow_term_left_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return repayment_amount_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return interest_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return capital_repayment_; });
@@ -430,9 +441,10 @@ function tagTester(name) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return balance_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return principal_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return i_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return term_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return year_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return term_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return year_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return missed_repayment_year_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return skip_interest_; });
 /* harmony import */ var _simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 const v_ = ({ i_in }) => 1 / (1 + Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }));
 
@@ -440,34 +452,40 @@ const v_pow_term_left_ = ({ i_in, term_in, year_in }) => Math.pow(Object(_simple
 
 // automatic refinancing on:
 // @ year=0 ans=0
-const repayment_amount_ = ({ year_in, principal_in, i_in, term_in, missed_repayment_year_in }) => {
-  if (Math.abs(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, term_in, missed_repayment_year_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 })) < 0.01) return 0;
-  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, term_in, missed_repayment_year_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) / (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));else
+const repayment_amount_ = ({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
+  if (Math.abs(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 })) < 0.01) return 0;
+  //if (term() == year()) ??
+  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) / (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));else
 
-  return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, term_in, missed_repayment_year_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }) / (1 - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v_pow_term_left"])({ i_in, term_in, year_in }));
+  return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }) / (1 - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v_pow_term_left"])({ i_in, term_in, year_in }));
 };
 
 // interest charged:
-const interest_ = ({ year_in, principal_in, term_in, missed_repayment_year_in, i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, term_in, missed_repayment_year_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in });
+const interest_ = ({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in });
 // restrict cap repayment to repayment made..
-const capital_repayment_ = ({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }) => {
-  return Math.max(0, Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_repayment"])({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }));
+const capital_repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }) => {
+  return Math.max(0, Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }));
 };
-const interest_repayment_ = ({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }) => Math.min(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, term_in, missed_repayment_year_in, i_in }));
+const interest_repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }) => Math.min(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in }));
 
 // modelling all repayments as being met, except for missed_repayment_year (if not 0):
-const repayment_made_ = ({ year_in, term_in, missed_repayment_year_in }) =>
-Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) <= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) && Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) != 0 && Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) != Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["missed_repayment_year"])({ missed_repayment_year_in });
-const repayment_ = ({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_made"])({ year_in, term_in, missed_repayment_year_in }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_amount"])({ year_in, principal_in, i_in, term_in, missed_repayment_year_in });
+const repayment_made_ = ({ year_in, term_in }) =>
+Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) <= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) && Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) != 0; /*&& year() != missed_repayment_year()*/
+const repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }) => {
+  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) == Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["missed_repayment_year"])({ missed_repayment_year_in })) {
+    if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["skip_interest"])({ skip_interest_in })) return 0;else
+    return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in });
+  } else return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_made"])({ year_in, term_in }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_amount"])({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in });
+};
 
-const balance_ = ({ year_in, principal_in, i_in, term_in, missed_repayment_year_in }) => {
+const balance_ = ({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
   if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) < 0) return 0;
   if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["principal"])({ principal_in });else
 
   return (
-    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, term_in, missed_repayment_year_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) /*- capital_repayment()*/ +
-    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, term_in, missed_repayment_year_in, i_in }) -
-    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, term_in, missed_repayment_year_in, principal_in, i_in }));
+    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) /*- capital_repayment()*/ +
+    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, i_in }) -
+    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, i_in, term_in }));
 
 };
 
@@ -477,6 +495,7 @@ const i_ = ({ i_in }) => i_in;
 const term_ = ({ term_in }) => term_in;
 const year_ = ({ year_in }) => year_in;
 const missed_repayment_year_ = ({ missed_repayment_year_in }) => missed_repayment_year_in;
+const skip_interest_ = ({ skip_interest_in }) => skip_interest_in;
 
 /***/ }),
 /* 6 */
