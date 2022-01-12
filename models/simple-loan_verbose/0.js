@@ -2,7 +2,7 @@
 import memoize from 'lru-memoize';
 import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
-import { v_ as v$, v_pow_term_left_ as v_pow_term_left$, repayment_amount_ as repayment_amount$, interest_ as interest$, capital_repayment_ as capital_repayment$, interest_repayment_ as interest_repayment$, repayment_made_ as repayment_made$, repayment_ as repayment$, balance_ as balance$, interest_rate_ as interest_rate$, principal_ as principal$, i_ as i$, term_ as term$, year_ as year$, missed_repayment_year_ as missed_repayment_year$, skip_interest_ as skip_interest$, d_i_year_ as d_i_year$, d_i_ as d_i$ } from "./simple-loan.cul.js?+memoed&cul_scope_id=1&cul_parent_scope_id=0&location=ba21ed285072db421519963fabcd19e4"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+import { v_ as v$, v_pow_term_left_ as v_pow_term_left$, repayment_amount_ as repayment_amount$, interest_ as interest$, capital_repayment_ as capital_repayment$, interest_repayment_ as interest_repayment$, repayment_due_ as repayment_due$, repayment_ as repayment$, balance_ as balance$, interest_rate_ as interest_rate$, principal_ as principal$, i_ as i$, term_ as term$, year_ as year$, missed_repayment_year_ as missed_repayment_year$, skip_interest_ as skip_interest$, d_i_year_ as d_i_year$, d_i_ as d_i$ } from "./simple-loan.cul.js?+memoed&cul_scope_id=1&cul_parent_scope_id=0&location=ba21ed285072db421519963fabcd19e4"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
 
 
@@ -66,13 +66,13 @@ export const interest_repayment = (a) => {
 
 
 
-////////// start repayment_made memo-loader code //////////
-const repayment_made$m = memoize(999999, isEqual)(repayment_made$);
-export const repayment_made = (a) => {
-  return repayment_made$m(a);
-  repayment_made$({ year_in, term_in }); // never run, but here to "trick" calculang graph logic
+////////// start repayment_due memo-loader code //////////
+const repayment_due$m = memoize(999999, isEqual)(repayment_due$);
+export const repayment_due = (a) => {
+  return repayment_due$m(a);
+  repayment_due$({ year_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
-////////// end repayment_made memo-loader code //////////
+////////// end repayment_due memo-loader code //////////
 
 
 

@@ -106,7 +106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest", function() { return interest; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "capital_repayment", function() { return capital_repayment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest_repayment", function() { return interest_repayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_made", function() { return repayment_made; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment_due", function() { return repayment_due; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "repayment", function() { return repayment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "balance", function() { return balance; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "interest_rate", function() { return interest_rate; });
@@ -189,13 +189,13 @@ const interest_repayment = (a) => {
 
 
 
-////////// start repayment_made memo-loader code //////////
-const repayment_made$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_made_ */ "m"]);
-const repayment_made = (a) => {
-  return repayment_made$m(a);
-  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_made_ */ "m"])({ year_in, term_in }); // never run, but here to "trick" calculang graph logic
+////////// start repayment_due memo-loader code //////////
+const repayment_due$m = Object(lru_memoize__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(999999, underscore__WEBPACK_IMPORTED_MODULE_1__[/* isEqual */ "a"])(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_due_ */ "m"]);
+const repayment_due = (a) => {
+  return repayment_due$m(a);
+  Object(_simple_loan_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0_location_ba21ed285072db421519963fabcd19e4__WEBPACK_IMPORTED_MODULE_2__[/* repayment_due_ */ "m"])({ year_in, term_in }); // never run, but here to "trick" calculang graph logic
 };
-////////// end repayment_made memo-loader code //////////
+////////// end repayment_due memo-loader code //////////
 
 
 
@@ -389,7 +389,7 @@ var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return interest_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return capital_repayment_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return interest_repayment_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return repayment_made_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return repayment_due_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return repayment_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return balance_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return interest_rate_; });
@@ -406,57 +406,62 @@ const v_ = ({ year_in, d_i_year_in, i_in, d_i_in }) => 1 / (1 + Object(_simple_l
 
 const v_pow_term_left_ = ({ year_in, d_i_year_in, i_in, d_i_in, term_in }) => Math.pow(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v"])({ year_in, d_i_year_in, i_in, d_i_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));
 
-// automatic refinancing on:
-// @ year=0 ans=0
+// this models automatic refinancing because there is no restriction to last financing, an updated calc is applied every year
 const repayment_amount_ = ({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
   if (Math.abs(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 })) < 0.01) return 0;
-  //if (term() == year()) ??
-  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) / (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));else
+  //if (term() == year()) edge case?
+  if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }) == 0)
+  return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) / (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));else
 
-  return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }) / (1 - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v_pow_term_left"])({ year_in, d_i_year_in, i_in, d_i_in, term_in }));
+  return (
+    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }) / (
+    1 - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v_pow_term_left"])({ year_in, d_i_year_in, i_in, d_i_in, term_in })));
+
 };
 
-// interest charged:
-const interest_ = ({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in });
-// restrict cap repayment to repayment made..
+// interest charged to balance:
+const interest_ = ({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in }) =>
+Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in });
+
+// restrict cap repayment to repayment made.. (no, implied?)
 const capital_repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }) => {
   return Math.max(0, Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }));
 };
 const interest_repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }) => Math.min(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in }));
 
-// modelling all repayments as being met, except for missed_repayment_year (if not 0):
-const repayment_made_ = ({ year_in, term_in }) =>
-Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) <= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) && Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) != 0; /*&& year() != missed_repayment_year()*/
+// year 0 the principal is received, first repayment is due year=1
+const repayment_due_ = ({ year_in, term_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) <= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) && Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) != 0;
+
 const repayment_ = ({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }) => {
+  // I'm modelling a "missed repayment" as being either 0 (skip_interest is set) or =interest (an interest-only payment: capital part is 'missed')
   if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) == Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["missed_repayment_year"])({ missed_repayment_year_in })) {
     if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["skip_interest"])({ skip_interest_in })) return 0;else
     return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in });
-  } else return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_made"])({ year_in, term_in }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_amount"])({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in });
+  } else return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_due"])({ year_in, term_in }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment_amount"])({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in });
 };
 
 const balance_ = ({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
   if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) < 0) return 0;
   if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) == 0) return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["principal"])({ principal_in });else
-
-  return (
-    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) /*- capital_repayment()*/ +
-    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in }) -
-    Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in }));
-
+  return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) + Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest"])({ year_in, principal_in, missed_repayment_year_in, skip_interest_in, term_in, d_i_year_in, i_in, d_i_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["repayment"])({ year_in, missed_repayment_year_in, skip_interest_in, principal_in, d_i_year_in, i_in, d_i_in, term_in });
 };
 
-
+// changing interest rates are a modelling option, blend here and use above:
 const interest_rate_ = ({ year_in, d_i_year_in, i_in, d_i_in }) => Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) >= Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["d_i_year"])({ d_i_year_in }) ? Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in }) + Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["d_i"])({ d_i_in }) : Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["i"])({ i_in });
 
 // inputs:
 const principal_ = ({ principal_in }) => principal_in;
-const i_ = ({ i_in }) => i_in;
+const i_ = ({ i_in }) => i_in; // interest rate
 const term_ = ({ term_in }) => term_in;
 const year_ = ({ year_in }) => year_in;
+
+// inputs for missed repayment option:
 const missed_repayment_year_ = ({ missed_repayment_year_in }) => missed_repayment_year_in;
 const skip_interest_ = ({ skip_interest_in }) => skip_interest_in;
-const d_i_year_ = ({ d_i_year_in }) => d_i_year_in;
-const d_i_ = ({ d_i_in }) => d_i_in;
+
+// inputs for delta/changing interest rates:
+const d_i_year_ = ({ d_i_year_in }) => d_i_year_in; // year the delta interest rate happens
+const d_i_ = ({ d_i_in }) => d_i_in; // delta interest rate
 
 /***/ }),
 /* 3 */
