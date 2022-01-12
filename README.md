@@ -10,7 +10,7 @@
 
 ## 🐣
 
-See the dev model in action on ObservableHQ: [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev)
+See the dev model in action on ObservableHQ: [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev?collection=@declann/calculang)
 
 ## credits
 
