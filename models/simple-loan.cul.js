@@ -1,13 +1,13 @@
 export const v = () => 1 / (1 + interest_rate());
 
-export const v_pow_term_left = () => Math.pow(v(), term() - year());
+export const v_pow_term_left = () => Math.pow(v(), term() - year() + 1);
 
 // this models automatic refinancing because there is no restriction to last financing, an updated calc is applied every year
 export const repayment_amount = () => {
   if (Math.abs(balance({ year_in: year() - 1 })) < 0.01) return 0;
   //if (term() == year()) edge case?
   if (interest_rate() == 0)
-    return balance({ year_in: year() - 1 }) / (term() - year());
+    return balance({ year_in: year() - 1 }) / (term() - year() + 1);
   else
     return (
       (balance({ year_in: year() - 1 }) * interest_rate()) /

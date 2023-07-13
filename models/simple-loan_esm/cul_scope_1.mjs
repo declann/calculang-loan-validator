@@ -1,13 +1,13 @@
 import { d_i } from "./cul_scope_0.mjs";import { d_i_year } from "./cul_scope_0.mjs";import { skip_interest } from "./cul_scope_0.mjs";import { missed_repayment_year } from "./cul_scope_0.mjs";import { year } from "./cul_scope_0.mjs";import { term } from "./cul_scope_0.mjs";import { i } from "./cul_scope_0.mjs";import { principal } from "./cul_scope_0.mjs";import { interest_rate } from "./cul_scope_0.mjs";import { balance } from "./cul_scope_0.mjs";import { repayment } from "./cul_scope_0.mjs";import { repayment_due } from "./cul_scope_0.mjs";import { interest_repayment } from "./cul_scope_0.mjs";import { capital_repayment } from "./cul_scope_0.mjs";import { interest } from "./cul_scope_0.mjs";import { repayment_amount } from "./cul_scope_0.mjs";import { v_pow_term_left } from "./cul_scope_0.mjs";import { v } from "./cul_scope_0.mjs";export const v_ = ({ year_in, d_i_year_in, i_in, d_i_in }) => 1 / (1 + interest_rate({ year_in, d_i_year_in, i_in, d_i_in }));
 
-export const v_pow_term_left_ = ({ year_in, d_i_year_in, i_in, d_i_in, term_in }) => Math.pow(v({ year_in, d_i_year_in, i_in, d_i_in }), term({ term_in }) - year({ year_in }));
+export const v_pow_term_left_ = ({ year_in, d_i_year_in, i_in, d_i_in, term_in }) => Math.pow(v({ year_in, d_i_year_in, i_in, d_i_in }), term({ term_in }) - year({ year_in }) + 1);
 
 // this models automatic refinancing because there is no restriction to last financing, an updated calc is applied every year
 export const repayment_amount_ = ({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
   if (Math.abs(balance({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: year({ year_in }) - 1 })) < 0.01) return 0;
   //if (term() == year()) edge case?
   if (interest_rate({ year_in, d_i_year_in, i_in, d_i_in }) == 0)
-  return balance({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: year({ year_in }) - 1 }) / (term({ term_in }) - year({ year_in }));else
+  return balance({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: year({ year_in }) - 1 }) / (term({ term_in }) - year({ year_in }) + 1);else
 
   return (
     balance({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: year({ year_in }) - 1 }) * interest_rate({ year_in, d_i_year_in, i_in, d_i_in }) / (

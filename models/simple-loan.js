@@ -458,14 +458,14 @@ var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
 /* harmony import */ var _simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 const v_ = ({ year_in, d_i_year_in, i_in, d_i_in }) => 1 / (1 + Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }));
 
-const v_pow_term_left_ = ({ year_in, d_i_year_in, i_in, d_i_in, term_in }) => Math.pow(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v"])({ year_in, d_i_year_in, i_in, d_i_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));
+const v_pow_term_left_ = ({ year_in, d_i_year_in, i_in, d_i_in, term_in }) => Math.pow(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["v"])({ year_in, d_i_year_in, i_in, d_i_in }), Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) + 1);
 
 // this models automatic refinancing because there is no restriction to last financing, an updated calc is applied every year
 const repayment_amount_ = ({ year_in, principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {
   if (Math.abs(Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 })) < 0.01) return 0;
   //if (term() == year()) edge case?
   if (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }) == 0)
-  return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) / (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }));else
+  return Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) / (Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["term"])({ term_in }) - Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) + 1);else
 
   return (
     Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["balance"])({ principal_in, d_i_year_in, i_in, d_i_in, missed_repayment_year_in, skip_interest_in, term_in, year_in: Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["year"])({ year_in }) - 1 }) * Object(_simple_loan_cul_js__WEBPACK_IMPORTED_MODULE_0__["interest_rate"])({ year_in, d_i_year_in, i_in, d_i_in }) / (
