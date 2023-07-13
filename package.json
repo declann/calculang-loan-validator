@@ -7,7 +7,7 @@
     "url": "https://github.com/declann/calculang-loan-validator.git"
   },
   "homepage": "https://github.com/declann/calculang-loan-validator/tree/main",
-  "author": "Declan Naughton working for DCN Consulting",
+  "author": "Declan Naughton",
   "keywords": [
     "calculang",
     "calculations",
@@ -28,6 +28,6 @@
     "underscore": "^1.13.1"
   },
   "devDependencies": {
-    "@calculang/calculang-js": "file:../../../../programming/PROJECTS/github/DECLANN/calculang/packages/calculang-js"
+    "@calculang/calculang-js": "^0.1.0-alpha.6"
   }
 }
